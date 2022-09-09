@@ -1,0 +1,46 @@
+{% extends 'admin/baseAdmin.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">SVM</h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4">
+          <img class="mb-2" src="{{ url_for('.static', filename='images/svm.svg') }}" alt="" width="150" height="150">
+        </ul>
+        <a href="{{ url_for('.train_svm') }}" class="btn btn-lg btn-block btn-outline-primary">Выбрать</a>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Наивный Байесовский</h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4">
+          <img class="mb-2" src="{{ url_for('.static', filename='images/Thomas_Bayes.gif') }}" alt="" width="150" height="150">
+        </ul>
+        <a href="{{ url_for('.train_nb') }}" class="btn btn-lg btn-block btn-outline-primary">Выбрать</a>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">XGBoost</h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4">
+          <img class="mb-2" src="{{ url_for('.static', filename='images/XGBoost-Algorithm-2.jpg') }}" alt="" width="250" height="150">
+        </ul>
+        <a href="{{ url_for('.train_xgb') }}" class="btn btn-lg btn-block btn-outline-primary">Выбрать</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

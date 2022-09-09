@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Программа распознавания лиц ОГВ
+{% endblock %}
+
+{% block body %}
+
+<div class = "container">
+    <div class = "starter-template">
+        <h1>Программа распознавания лиц </h1>
+        <p class = "lead"> Загрузите изображение</p>
+        <p class = "lead"> Максимальный размер изображения: 2 MB </p>
+        <p class = "lead"> Выполнил: Самойлов А.Е.</p>
+    </div>
+</div>
+
+<header class="navbar">
+    <form action="/upload" method="post" enctype="multipart/form-data" >
+        <div align="center">
+            <label class="btn btn-default btn-file">
+                Обзор <input type="file" name="image" style="display: none;">
+            </label>
+            <input type="submit" value="Распознать" class="btn btn-primary">
+        </div>
+    </form>
+</header>
+
+<div class="text-center">
+    {% if init %}
+        {% if face_recognized %}
+            <div class="alert alert-success" style="margin-top:18px;">
+                <strong>Получилось!</strong> {{ num_faces }} лиц(о) обнаружено!
+            </div>
+            {% if image_to_show %}
+                <div>
+                    <img src="{{ image_to_show }}" style="width:600px;">
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="alert alert-danger" style="margin-top:18px;">
+                <strong>Nope!</strong> Лиц не обнаружено
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+{% endblock %}

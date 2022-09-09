@@ -1,0 +1,40 @@
+{% extends 'admin/baseAdmin.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<header class="navbar">
+    <form action="/admin/test_images" method="post" enctype="multipart/form-data" >
+        <table align="center">
+        <tr>
+            <td>Путь к тестовой выборке</td>
+            <td><input type="text" name="classes_dir" size=100></td>
+        </tr>
+        <tr>
+            <td>Путь к классификатору</td>
+            <td><input type="text" name="classifier_model_path" size=100></td>
+        </tr>
+        <tr>
+            <td>Путь к подписям</td>
+            <td><input type="text" name="label_encoder_path" size=100></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Проверить модель" class="btn btn-primary"></td>
+        </tr>
+    </table>
+    </form>
+</header>
+{% endblock %}

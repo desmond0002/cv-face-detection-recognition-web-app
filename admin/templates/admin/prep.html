@@ -1,0 +1,58 @@
+{% extends 'admin/baseAdmin.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<header class="navbar">
+    <form action="/admin/extract" method="post" enctype="multipart/form-data" >
+        <div align="center">
+            <table align="center">
+                <tr>
+                    <td>Путь к изображениям</td>
+                    <td><input type="text" name="extract_path" size=100></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Извлечь лица" class="btn btn-primary"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</header>
+
+
+
+<header class="navbar">
+    <form action="/admin/prep_embeddings" method="post" enctype="multipart/form-data" >
+        <div align="center">
+            <table align="center">
+                <tr>
+                    <td>Путь к лицам</td>
+                    <td><input type="text" name="classes_dir" size=100></td>
+                </tr>
+                <tr>
+                    <td>Путь к векторам</td>
+                    <td><input type="text" name="embeddings_path" size=100></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Вычислить векторы" class="btn btn-primary"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</header>
+
+
+{% endblock %}
